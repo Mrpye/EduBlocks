@@ -1648,8 +1648,8 @@ Blockly.Blocks['flask_return'] = {
     this.appendDummyInput()
         .appendField("return")
         .appendField(new Blockly.FieldTextInput(""), "var");
-    this.setPreviousStatement(true, 'flask_return');
-    this.setNextStatement(false, 'flask_return');
+    this.setPreviousStatement(true, 'block');
+    this.setNextStatement(false, 'block');
     this.setColour(200);
     this.setTooltip('Use this to print a variable.');
     this.setHelpUrl('http://www.example.com/');
