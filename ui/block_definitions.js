@@ -580,8 +580,8 @@ Blockly.Blocks['while_true'] = {
         .appendField('while True:');
     this.appendStatementInput('DO')
         .appendField('');
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
+    this.setPreviousStatement(true, 'block');
+    this.setNextStatement(true, 'block');
     this.setColour(336);
     this.setTooltip('Forever loop.');
     this.setHelpUrl('https://t.co/PCZC5EFe4D');
@@ -594,8 +594,8 @@ Blockly.Blocks['else'] = {
         .appendField('else:');
     this.appendStatementInput('DO')
         .appendField('');
-    this.setPreviousStatement(true);
-    this.setNextStatement(false);
+    this.setPreviousStatement(true, 'block');
+    this.setNextStatement(false, 'block');
     this.setColour(336);
     this.setTooltip('Else statement');
     this.setHelpUrl('https://t.co/PCZC5EFe4D');
