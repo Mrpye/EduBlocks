@@ -1602,7 +1602,7 @@ Blockly.Blocks['flask_import'] = {
     this.setPreviousStatement(true, 'block');
     this.setNextStatement(true, 'block');
     this.setColour(200);
-    this.setTooltip('');
+    this.setTooltip('Flask Import');
     this.setHelpUrl('');
   }
 };
@@ -1621,7 +1621,7 @@ Blockly.Blocks['flask_server'] = {
     this.setPreviousStatement(true, 'block');
     this.setNextStatement(true, 'block');
     this.setColour(200);
-    this.setTooltip('');
+    this.setTooltip('Flask Server');
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -1639,7 +1639,7 @@ Blockly.Blocks['flask_route'] = {
     this.setPreviousStatement(true, "flask_route");
     this.setNextStatement(true, "flask_route");
     this.setColour(200);
-    this.setTooltip('');
+    this.setTooltip('Flask route');
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -1651,7 +1651,108 @@ Blockly.Blocks['flask_return'] = {
     this.setPreviousStatement(true, 'block');
     this.setNextStatement(false, 'block');
     this.setColour(200);
-    this.setTooltip('Use this to print a variable.');
+    this.setTooltip('Flask Return.');
     this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+//*******************************
+// Added by andrew pye
+// 15/04/2017
+// Mysql
+//*******************************
+Blockly.Blocks['mysql_import'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("import pymysql.cursors");
+    this.setPreviousStatement(true, 'block');
+    this.setNextStatement(true, 'block');
+    this.setColour(300);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+//db = MySQLdb.connect(host="localhost", user="root", passwd="", db="test")
+Blockly.Blocks['mysql_connection'] = {
+  init: function() {
+	this.appendDummyInput()
+		.appendField("mysql_db = pymysql.connect(\"")
+		.appendField(new Blockly.FieldTextInput("localhost"), "host")
+		.appendField("\",\"")
+		.appendField(new Blockly.FieldTextInput("root"), "user")
+		.appendField("\",\"")
+		.appendField(new Blockly.FieldTextInput("password"), "password")
+		.appendField("\",\"")
+		.appendField(new Blockly.FieldTextInput("db"), "db")
+		.appendField("\")");
+		
+		//this.setOutput(true, 'String');
+		//this.setIput(true, 'String');
+		this.setPreviousStatement(true, 'block');
+		this.setNextStatement(true, 'block');
+		this.setColour(300);
+		this.setTooltip('open the connection.');
+		this.setHelpUrl('https://docs.python.org/3/library/http.client.html');
+  }
+};
+
+Blockly.Blocks['mysql_cursor'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("cur = mysql_db.cursor()");
+    this.setPreviousStatement(true, 'block');
+    this.setNextStatement(true, 'block');
+    this.setColour(300);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+//cur.execute("SELECT firstname,lastname FROM test.name")
+Blockly.Blocks['mysql_execute'] = {
+  init: function() {
+	this.appendDummyInput()
+		.appendField("mysql_cur.execute(\"")
+		.appendField(new Blockly.FieldTextInput("sql"), "sql")
+		.appendField("\")");
+		//this.setOutput(true, 'String');
+		//this.setIput(true, 'String');
+		this.setPreviousStatement(true, 'block');
+		this.setNextStatement(true, 'block');
+		this.setColour(300);
+		this.setTooltip('Ececute sql.');
+		this.setHelpUrl('https://docs.python.org/3/library/http.client.html');
+  }
+};
+
+Blockly.Blocks['mysql_for_fetch'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("for mysql_row in mysql_cur.fetchall() :");
+    this.appendStatementInput("DO")
+        .appendField('');
+    this.setPreviousStatement(true, 'block');
+    this.setNextStatement(true, 'block');
+    this.setColour(300);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['mysql_row'] = {
+  init: function() {
+	this.appendDummyInput()
+        .appendField("str(mysql_row[")
+		.appendField(new Blockly.FieldTextInput("0"), "index")
+		.appendField("])");
+	this.setOutput(true, 'String');
+    this.setPreviousStatement(false, 'block');
+    this.setNextStatement(false, 'block');
+    this.setColour(300);
+    this.setTooltip('Get the responce.');
+    this.setHelpUrl('https://docs.python.org/3/library/http.client.html');
+	
+	
   }
 };

@@ -855,3 +855,48 @@ Blockly.Python['flask_return'] = function(block) {
   return code;
 };
 
+
+//*******************************
+// Added by andrew pye
+// 17/04/2017
+// Mysql
+//*******************************
+Blockly.Python['mysql_import'] = function(block) {
+  var code = 'import pymysql.cursors\n';
+  return code;
+};
+
+Blockly.Python['mysql_connection'] = function(block) {
+	// TODO: Assemble Python into code variable.
+	var text_host = block.getFieldValue('host');
+	var text_user = block.getFieldValue('user');
+	var text_password = block.getFieldValue('password');
+	var text_db = block.getFieldValue('db');
+	var code = 'mysql_db = pymysql.connect(host="'+text_host+'", user="'+text_user+'", passwd="'+text_password+'", db="'+text_db+'",autocommit=True)\n';
+	return code;
+};
+Blockly.Python['mysql_cursor'] = function(block) {
+  var code = 'mysql_cur = mysql_db.cursor()\n';
+  return code;
+};
+Blockly.Python['mysql_execute'] = function(block) {
+	// TODO: Assemble Python into code variable.
+	var text_sql = block.getFieldValue('sql');
+	var code = 'mysql_cur.execute("'+text_sql+'")\n';
+	return code;
+};
+Blockly.Python['mysql_for_fetch'] = function(block) {
+  var branch = Blockly.Python.statementToCode(block, 'DO');
+  //branch = Blockly.Python.addLoopTrap(branch, block.id) ||
+   //   Blockly.Python.PASS;
+  // TODO: Assemble Python into code variable.
+  var code = 'for mysql_row in mysql_cur.fetchall() :\n';
+  code+=branch;
+  return code;
+};
+Blockly.Python['mysql_row'] = function(block) {
+	// TODO: Assemble Python into code variable.
+	var text_index = block.getFieldValue('index');
+	var code = 'str(mysql_row['+text_index+'])\n';
+	return code;
+};

@@ -6,7 +6,7 @@ LOCALREPO=$(dirname $(readlink -f $0))
 pkill node
 
 cd $LOCALREPO
-bash check.sh
+#bash check.sh
 
 cd $LOCALREPO/server
 npm start &
