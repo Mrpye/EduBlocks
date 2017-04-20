@@ -731,37 +731,38 @@ Blockly.Python['http_client_import_rest'] = function(block) {
 };
 
 Blockly.Python['https_client_create_connection'] = function(block) {
-  var text_url = block.getFieldValue('URL');
-  var code = 'conn = http.client.HTTPSConnection("'+text_url+'") \n';
-  return code;
+	var text_url = block.getFieldValue('URL');
+	var code = 'http.client.HTTPSConnection("'+text_url+'") \n';
+	return [code, Blockly.Python.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Python['http_client_create_connection'] = function(block) {
   var text_url = block.getFieldValue('URL');
   var text_port = block.getFieldValue('PORT');
-  var code = 'conn = http.client.HTTPConnection("'+text_url+'",'+text_port+') \n';
-  return code;
+  var code = 'http.client.HTTPConnection("'+text_url+'",'+text_port+') \n';
+  return [code, Blockly.Python.ORDER_FUNCTION_CALL];
 };
 
 Blockly.Python['http_client_request'] = function(block) {
-  var text_method = block.getFieldValue('method');
-  var text_request = block.getFieldValue('request');
-  var text_headers = block.getFieldValue('headers');
-  var text_body = block.getFieldValue('body');
-  var code="";
-  code = 'conn.request("'+text_method+'", "'+text_request+'", body="'+text_body+'", headers={'+text_headers+'}) \n';
-  return code;
+	var order = Blockly.Python.ORDER_RELATIONAL;
+	var argument0 = Blockly.Python.valueToCode(block, 'CONN', order) || 'conn';
+	var text_method = block.getFieldValue('method');
+	var text_request = block.getFieldValue('request');
+	var text_headers = block.getFieldValue('headers');
+	var text_body = block.getFieldValue('body');
+	var code="";
+	code = argument0+'.request("'+text_method+'", "'+text_request+'", body="'+text_body+'", headers={'+text_headers+'}) \n';
+	return code;
 };
 
-Blockly.Python['http_client_responce'] = function(block) {
-  var code = 'r1 = conn.getresponse() \n';
-  return code;
-};
 
 Blockly.Python['http_client_responce'] = function(block) {
-  var code = 'r1 = conn.getresponse() \n';
-  return code;
+	var order = Blockly.Python.ORDER_RELATIONAL;
+	var argument0 = Blockly.Python.valueToCode(block, 'CONN', order) || 'conn';
+	var code =  argument0+'.getresponse() \n';
+	return [code, Blockly.Python.ORDER_FUNCTION_CALL];
 };
+
 
 Blockly.Python['inline_print'] = function(block) {
 	var text_print2=Blockly.Python.statementToCode(block, 'VALUE');
@@ -771,21 +772,27 @@ Blockly.Python['inline_print'] = function(block) {
 };
 
 Blockly.Python['http_client_status'] = function(block) {
-  // TODO: Assemble Python into code variable.
-  var code = 'r1.status';
-  return code;
+	var order = Blockly.Python.ORDER_RELATIONAL;
+	var argument0 = Blockly.Python.valueToCode(block, 'R', order) || 'r1';
+	// TODO: Assemble Python into code variable.
+	var code = argument0+'.status';
+	return code;
 };
 
 Blockly.Python['http_client_reason'] = function(block) {
-  // TODO: Assemble Python into code variable.
-  var code = 'r1.reason';
-  return code;
+	var order = Blockly.Python.ORDER_RELATIONAL;
+	var argument0 = Blockly.Python.valueToCode(block, 'R', order) || 'r1';
+	// TODO: Assemble Python into code variable.
+	var code = argument0+'.reason';
+	return code;
 };
 
 Blockly.Python['http_client_read'] = function(block) {
-  // TODO: Assemble Python into code variable.
-  var code = 'r1.read().decode()';
-  return code;
+	// TODO: Assemble Python into code variable.
+	var order = Blockly.Python.ORDER_RELATIONAL;
+	var argument0 = Blockly.Python.valueToCode(block, 'R', order) || 'r1';
+	var code = argument0+'.read().decode()';
+	return code;
 };
 
 Blockly.Python['code_block'] = function(block) {

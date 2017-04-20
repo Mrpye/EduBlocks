@@ -232,14 +232,12 @@
     </category>
     <category name="Minecraft" colour="120">
     	<category name="General" colour="270">
-        	<block type="mcimport"></block>
-          <block type="mccreate"></block>
-          <block type="import_block"></block>
-
-
+			<block type="mcimport"></block>
+			<block type="mccreate"></block>
+			<block type="import_block"></block>
         </category>
         <category name="Commands" colour="120">
-        	      <block type="mcpost"></block>
+        	     <block type="mcpost"></block>
                 <block type="mcpos"></block>
                 <block type="varprint"></block>
                 <block type="setpos"></block>
@@ -254,7 +252,6 @@
                 <block type="mctext2"></block>
                 <block type="mctext5"></block>
                 <block type="mcblocks8"></block>
-
                 <block type="return"></block>
                 <block type="getdist"></block>
         </category>
@@ -286,18 +283,52 @@
         <block type="blinktclear"></block>
       </category>
     </category>
-
+	
+ 
+				  
 	<category name="Advanced" colour="70">
 		<category name="Http Client" colour="70">
 			<block type="http_client_import_rest"></block>
-			<block type="https_client_create_connection"></block>
+			<block type="https_client_create_connection">
+		
+			</block>
 			<block type="http_client_create_connection"></block>
-			<block type="http_client_request"></block>
-			<block type="http_client_responce"></block>
+			<block type="http_client_request">
+				<value name="CONN">
+					<shadow type="variables_get">
+						<field name="VAR">conn</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="http_client_responce">
+				<value name="CONN">
+					<shadow type="variables_get">
+						<field name="VAR">conn</field>
+					</shadow>
+				</value>
+			</block>
 			<block type="inline_print"></block>
-			<block type="http_client_status"></block>
-			<block type="http_client_reason"></block>
-			<block type="http_client_read"></block>
+			<block type="http_client_status">
+				<value name="R">
+					<shadow type="variables_get">
+						<field name="VAR">r1</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="http_client_reason">
+				<value name="R">
+					<shadow type="variables_get">
+						<field name="VAR">r1</field>
+					</shadow>
+				</value>
+			</block>
+			<block type="http_client_read">
+				<value name="R">
+					<shadow type="variables_get">
+						<field name="VAR">r1</field>
+					</shadow>
+				</value>
+			</block>
 		</category>
 		<category name="Flask" colour="200">
 			<block type="flask_import"></block>
