@@ -1458,8 +1458,8 @@ Blockly.Blocks['https_client_create_connection'] = {
 		.appendField(new Blockly.FieldTextInput("www.edublocks.org"), "URL")
 		.appendField("\")")
 	this.setOutput(true, 'String');
-    this.setPreviousStatement(null, 'block');
-    this.setNextStatement(null, 'block');
+    this.setPreviousStatement(true, 'block');
+    this.setNextStatement(true, 'block');
     this.setColour(70);
     this.setTooltip('Created a connection');
     this.setHelpUrl('https://docs.python.org/3/library/http.client.html');
@@ -1475,8 +1475,8 @@ Blockly.Blocks['http_client_create_connection'] = {
 		.appendField(new Blockly.FieldTextInput("80"), "PORT")
 		.appendField("\")");
 	this.setOutput(true, 'String');
-    this.setPreviousStatement(null, 'block');
-    this.setNextStatement(null, 'block');
+    this.setPreviousStatement(true, 'block');
+    this.setNextStatement(true, 'block');
     this.setColour(70);
     this.setTooltip('Created a connection');
     this.setHelpUrl('https://docs.python.org/3/library/http.client.html');
@@ -1518,8 +1518,8 @@ Blockly.Blocks['http_client_responce'] = {
         .appendField(".getresponse()");
 	this.setOutput(true, 'String');
 	this.setInputsInline(true);
-    this.setPreviousStatement(false, 'block');
-    this.setNextStatement(false, 'block');
+    this.setPreviousStatement(true, 'block');
+    this.setNextStatement(true, 'block');
     this.setColour(70);
     this.setTooltip('Get the responce.');
     this.setHelpUrl('https://docs.python.org/3/library/http.client.html');

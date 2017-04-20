@@ -733,14 +733,23 @@ Blockly.Python['http_client_import_rest'] = function(block) {
 Blockly.Python['https_client_create_connection'] = function(block) {
 	var text_url = block.getFieldValue('URL');
 	var code = 'http.client.HTTPSConnection("'+text_url+'") \n';
-	return [code, Blockly.Python.ORDER_FUNCTION_CALL];
+
+	if (block.outputConnection.isConnected()){
+		return [code, Blockly.Python.ORDER_FUNCTION_CALL];
+	}else{
+		return 'conn = ' + code;
+	}
 };
 
 Blockly.Python['http_client_create_connection'] = function(block) {
   var text_url = block.getFieldValue('URL');
   var text_port = block.getFieldValue('PORT');
   var code = 'http.client.HTTPConnection("'+text_url+'",'+text_port+') \n';
-  return [code, Blockly.Python.ORDER_FUNCTION_CALL];
+  if (block.outputConnection.isConnected()){
+		return [code, Blockly.Python.ORDER_FUNCTION_CALL];
+	}else{
+		return 'conn = ' + code;
+	}
 };
 
 Blockly.Python['http_client_request'] = function(block) {
@@ -750,6 +759,8 @@ Blockly.Python['http_client_request'] = function(block) {
 	var text_request = block.getFieldValue('request');
 	var text_headers = block.getFieldValue('headers');
 	var text_body = block.getFieldValue('body');
+	
+	
 	var code="";
 	code = argument0+'.request("'+text_method+'", "'+text_request+'", body="'+text_body+'", headers={'+text_headers+'}) \n';
 	return code;
@@ -760,7 +771,11 @@ Blockly.Python['http_client_responce'] = function(block) {
 	var order = Blockly.Python.ORDER_RELATIONAL;
 	var argument0 = Blockly.Python.valueToCode(block, 'CONN', order) || 'conn';
 	var code =  argument0+'.getresponse() \n';
-	return [code, Blockly.Python.ORDER_FUNCTION_CALL];
+	if (block.outputConnection.isConnected()){
+		return [code, Blockly.Python.ORDER_FUNCTION_CALL];
+	}else{
+		return 'r1 = ' + code;
+	}
 };
 
 
