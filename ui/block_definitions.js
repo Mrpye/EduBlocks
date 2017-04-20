@@ -1578,6 +1578,7 @@ Blockly.Blocks['http_client_header'] = {
 		.appendField(",\"")
 		.appendField(new Blockly.FieldTextInput(""), "value")
 		.appendField("\"");
+		
 	this.setOutput(true, 'String');
 	this.setIput(true, 'String');
     this.setPreviousStatement(false, 'http_client_header');
@@ -1622,7 +1623,7 @@ Blockly.Blocks['flask_server'] = {
     this.setNextStatement(true, 'block');
     this.setColour(200);
     this.setTooltip('Flask Server');
-    this.setHelpUrl('http://www.example.com/');
+    this.setHelpUrl('');
   }
 };
 
@@ -1640,7 +1641,7 @@ Blockly.Blocks['flask_route'] = {
     this.setNextStatement(true, "flask_route");
     this.setColour(200);
     this.setTooltip('Flask route');
-    this.setHelpUrl('http://www.example.com/');
+    this.setHelpUrl('');
   }
 };
 Blockly.Blocks['flask_return'] = {
@@ -1652,7 +1653,7 @@ Blockly.Blocks['flask_return'] = {
     this.setNextStatement(false, 'block');
     this.setColour(200);
     this.setTooltip('Flask Return.');
-    this.setHelpUrl('http://www.example.com/');
+    this.setHelpUrl('');
   }
 };
 
@@ -1668,7 +1669,7 @@ Blockly.Blocks['mysql_import'] = {
     this.setPreviousStatement(true, 'block');
     this.setNextStatement(true, 'block');
     this.setColour(300);
-    this.setTooltip('');
+    this.setTooltip('Import Mysql Libary');
     this.setHelpUrl('');
   }
 };
@@ -1692,8 +1693,8 @@ Blockly.Blocks['mysql_connection'] = {
 		this.setPreviousStatement(true, 'block');
 		this.setNextStatement(true, 'block');
 		this.setColour(300);
-		this.setTooltip('open the connection.');
-		this.setHelpUrl('https://docs.python.org/3/library/http.client.html');
+		this.setTooltip('Open the connection.');
+		this.setHelpUrl('');
   }
 };
 
@@ -1704,7 +1705,7 @@ Blockly.Blocks['mysql_cursor'] = {
     this.setPreviousStatement(true, 'block');
     this.setNextStatement(true, 'block');
     this.setColour(300);
-    this.setTooltip('');
+    this.setTooltip('My Sql Cursor');
     this.setHelpUrl('');
   }
 };
@@ -1721,7 +1722,7 @@ Blockly.Blocks['mysql_execute'] = {
 		this.setPreviousStatement(true, 'block');
 		this.setNextStatement(true, 'block');
 		this.setColour(300);
-		this.setTooltip('Ececute sql.');
+		this.setTooltip('Execute Qry');
 		this.setHelpUrl('https://docs.python.org/3/library/http.client.html');
   }
 };
@@ -1735,8 +1736,8 @@ Blockly.Blocks['mysql_for_fetch'] = {
     this.setPreviousStatement(true, 'block');
     this.setNextStatement(true, 'block');
     this.setColour(300);
-    this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
+    this.setTooltip('Loop through the results');
+    this.setHelpUrl('');
   }
 };
 
@@ -1751,8 +1752,40 @@ Blockly.Blocks['mysql_row'] = {
     this.setNextStatement(false, 'block');
     this.setColour(300);
     this.setTooltip('Get the responce.');
-    this.setHelpUrl('https://docs.python.org/3/library/http.client.html');
+    this.setHelpUrl('');
 	
 	
   }
 };
+
+//cur.execute("SELECT firstname,lastname FROM test.name")
+Blockly.Blocks['mysql_fetch_one'] = {
+  init: function() {
+	this.appendDummyInput()
+		.appendField("mysql_row = cursor.fetchone()");
+		//this.setOutput(true, 'String');
+		//this.setIput(true, 'String');
+		this.setPreviousStatement(true, 'block');
+		this.setNextStatement(true, 'block');
+		this.setColour(300);
+		this.setTooltip('Fetch one row.');
+		this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks['mysql_close'] = {
+  init: function() {
+	this.appendDummyInput()
+        .appendField("mysql_db.close()");
+	//this.setOutput(true, 'String');
+    this.setPreviousStatement(true, 'block');
+    this.setNextStatement(true, 'block');
+    this.setColour(300);
+    this.setTooltip('code connection.');
+    this.setHelpUrl('');
+	
+	
+  }
+};
+
+
